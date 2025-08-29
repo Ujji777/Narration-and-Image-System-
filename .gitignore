@@ -1,49 +1,36 @@
-# Python cache
+# Python
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
 *.pyd
-*.pkl
-*.pyc
+*.sqlite3
 
 # Virtual environment
 venv/
-.env/
-.venv/
-env/
 ENV/
+env/
 
-# IDE/Editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Django specific
+# Django stuff
 *.log
 *.pot
 *.pyc
-*.pyo
-*.sqlite3
 db.sqlite3
-
-# Static/media
-staticfiles/
 media/
-static/audio_*.mp3
-static/final_*.mp3
-static/generated_images/
 
-# System files
+# IDEs
+.vscode/
+.idea/
+
+# OS files
 .DS_Store
 Thumbs.db
 
-# Pip / Build
-*.egg
-*.egg-info/
-dist/
-build/
-.eggs/
+# ffmpeg binaries (too large for GitHub)
+ffmpeg/
+ffmpeg/bin/
 
-# dotenv secrets
-*.env
+# Environment & API keys
+.env
+
+# Node / frontend stuff (if any later)
+node_modules/
