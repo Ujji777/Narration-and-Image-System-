@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poem Narrator</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 40px; 
+            background: #fafafa;
+        }
+        textarea { 
+            width: 80%; 
+            height: 150px; 
+            margin-bottom: 20px; 
+            padding: 10px;
+            font-size: 16px;
+        }
+        select, button { 
+            padding: 10px; 
+            margin: 10px; 
+            font-size: 16px;
+        }
+        .poster { 
+            border: 2px solid #333; 
+            width: 80%; 
+            margin: 20px auto; 
+            padding: 20px; 
+            background: #f0f0f0; 
+            font-size: 20px; 
+            font-style: italic; 
+            border-radius: 10px;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .result img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Poem Narrator 🎤</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="text" placeholder="Paste your poem, passage or quote here...">{{ poster_text }}</textarea><br>
+
+        <label>Choose Voice:</label>
+        <select name="voice">
+            {% for v in voices %}
+                <option value="{{ v.name }}">{{ v.label }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Choose Mood:</label>
+        <select name="mood">
+            {% for m in moods %}
+                <option value="{{ m }}">{{ m|title }}</option>
+            {% endfor %}
+        </select><br>
+
+        {% if music_options %}
+            <label>Select Background Music:</label>
+            <select name="bg_music">
+                {% for m in music_options %}
+                    <option value="{{ m }}">{{ m }}</option>
+                {% endfor %}
+            </select><br>
+        {% endif %}
+
+        <button type="submit">Generate Narration & Image</button>
+    </form>
+
+    {% if poster_text or audio_url or image_url %}
+        <div class="result">
+            {% if poster_text %}
+                <div class="poster">
+                    {{ poster_text }}
+                </div>
+            {% endif %}
+
+            {% if audio_url %}
+                <h3>Final Audio:</h3>
+                <audio controls>
+                    <source src="{{ audio_url }}" type="audio/mpeg">
+                </audio>
+            {% endif %}
+
+            {% if image_url %}
+                <h3>Generated Image:</h3>
+                <img src="{{ image_url }}" alt="Generated AI Image">
+            {% endif %}
+        </div>
+    {% endif %}
+</body>
+</html>
+
+

@@ -1,0 +1,49 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.pyc
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+
+# Static/media
+staticfiles/
+media/
+static/audio_*.mp3
+static/final_*.mp3
+static/generated_images/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Pip / Build
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# dotenv secrets
+*.env
